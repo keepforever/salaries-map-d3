@@ -1,23 +1,31 @@
-import React, { Component } from 'react';
-import { Container } from "./styled/app"
-import Preloader from "./comps/Preloader"
-import 'bootstrap/dist/css/bootstrap.css';
+import React, { Component } from "react";
+import { Container } from "./styled/app";
+import Preloader from "./comps/Preloader";
+import * as d3 from "d3";
+import _ from "lodash";
+import { loadAllData } from "./DataHandling";
 
 class App extends Component {
-
   state = {
     techSalaries: [],
+    medianIncomes: [],
+    countyNames: []
+  };
+
+  componentDidMount() {
+    loadAllData(data => this.setState(data));
   }
 
   render() {
     const { techSalaries } = this.state;
+    console.log('this.state = ', this.state, '\n' )
 
-    if(techSalaries.length < 1) return <Preloader />
+    if (techSalaries.length < 1) return <Preloader />;
 
     return (
-      <Container>
-        Hello App
-      </Container>
+      <div className="App container">
+        <h1>Loaded {techSalaries.length} salaries</h1>
+      </div>
     );
   }
 }
