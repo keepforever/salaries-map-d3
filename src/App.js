@@ -5,7 +5,7 @@ import * as d3 from "d3";
 import Preloader from "./comps/Preloader";
 // import CountyMap from "./components/CountyMap";
 // utils
-import { loadAllData } from "./DataHandling";
+import { loadAllData } from "./utils/dataHandling";
 
 class App extends Component {
   state = {
